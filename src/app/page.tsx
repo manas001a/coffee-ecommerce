@@ -8,7 +8,7 @@ import styles from './page.module.css';
 const features = [
   { icon: '🌍', title: 'Single Origin', desc: 'Ethically sourced from the world\'s premier coffee-growing regions.' },
   { icon: '🔥', title: 'Fresh Roasted', desc: 'Small-batch roasted within 48 hours of your order.' },
-  { icon: '🚚', title: 'Free Shipping', desc: 'Complimentary shipping on all orders over $50.' },
+  { icon: '🚚', title: 'Free Shipping', desc: 'Complimentary shipping on all orders over ₹500.' },
   { icon: '💎', title: 'Premium Quality', desc: 'Only the top 3% of specialty-grade beans make the cut.' },
 ];
 

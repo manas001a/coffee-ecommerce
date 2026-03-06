@@ -55,9 +55,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className={styles.footer}>
           <div className={styles.priceWrap}>
-            <span className={styles.price}>${product.price.toFixed(2)}</span>
+            <span className={styles.price}>₹{product.price.toFixed(2)}</span>
             {product.originalPrice && (
-              <span className={styles.originalPrice}>${product.originalPrice.toFixed(2)}</span>
+              <span className={styles.originalPrice}>₹{product.originalPrice.toFixed(2)}</span>
             )}
           </div>
           <div className={styles.rating}>

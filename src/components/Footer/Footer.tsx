@@ -34,6 +34,7 @@ export default function Footer() {
           <Link href="/about">About Us</Link>
           <Link href="/about">Our Story</Link>
           <Link href="/contact">Contact</Link>
+          <Link href="/admin">Admin Dashboard</Link>
           <a href="#">Careers</a>
           <a href="#">Blog</a>
         </div>

@@ -54,7 +54,7 @@ export default function Cart() {
                       </button>
                     </div>
                     <span className={styles.itemPrice}>
-                      ${(item.product.price * item.quantity).toFixed(2)}
+                      ₹{(item.product.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
                   <button
@@ -73,15 +73,15 @@ export default function Cart() {
           <div className={styles.cartFooter}>
             <div className={styles.subtotalRow}>
               <span>Subtotal</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>₹{totalPrice.toFixed(2)}</span>
             </div>
             <div className={styles.subtotalRow}>
               <span>Shipping</span>
-              <span>{totalPrice > 50 ? 'Free' : '$5.99'}</span>
+              <span>{totalPrice > 500 ? 'Free' : '₹50.00'}</span>
             </div>
             <div className={styles.totalRow}>
               <span>Total</span>
-              <span>${(totalPrice > 50 ? totalPrice : totalPrice + 5.99).toFixed(2)}</span>
+              <span>₹{(totalPrice > 500 ? totalPrice : totalPrice + 50).toFixed(2)}</span>
             </div>
             <Link href="/checkout" className={`btn btn-primary ${styles.checkoutBtn}`} onClick={closeCart}>
               Proceed to Checkout

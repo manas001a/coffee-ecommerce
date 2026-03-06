@@ -1,0 +1,140 @@
+.adminPage {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  min-height: 80vh;
+  background-color: var(--color-bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.statCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.ordersSection {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid var(--color-bg);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--color-bg);
+  vertical-align: middle;
+}
+
+.orderNum {
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.customerName {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.customerEmail {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.orderTotal {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.statusBadge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pending { background: #fff8e1; color: #f57c00; }
+.processing { background: #e3f2fd; color: #1976d2; }
+.shipped { background: #e8f5e9; color: #388e3c; }
+.delivered { background: #e8f5e9; color: #388e3c; }
+.cancelled { background: #ffebee; color: #d32f2f; }
+
+.date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.noOrders {
+  text-align: center;
+  padding: 3rem 0;
+}

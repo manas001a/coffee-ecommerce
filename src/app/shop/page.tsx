@@ -1,13 +1,41 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { products, categories } from '@/data/products';
+import { useState, useEffect, useMemo } from 'react';
+import { categories } from '@/data/products';
+import { Product } from '@/data/products';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import styles from './shop.module.css';
 
 export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortBy, setSortBy] = useState('featured');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          // Map MongoDB _id field and productId to our id field
+          const mapped = data.map((p: Record<string, unknown>) => ({
+            ...p,
+            id: p.productId || p._id,
+          }));
+          setProducts(mapped);
+        }
+      } catch (err) {
+        console.error('Failed to fetch from API, using local data:', err);
+        // Fallback to local data
+        const { products: localProducts } = await import('@/data/products');
+        setProducts(localProducts);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let filtered = activeCategory === 'all'
@@ -26,7 +54,7 @@ export default function ShopPage() {
       default:
         return filtered;
     }
-  }, [activeCategory, sortBy]);
+  }, [activeCategory, sortBy, products]);
 
   return (
     <div className={styles.shopPage}>
@@ -67,7 +95,12 @@ export default function ShopPage() {
         </div>
 
         <div className={styles.productsGrid}>
-          {filteredProducts.length > 0 ? (
+          {loading ? (
+            <div className={styles.noResults}>
+              <div className={styles.noResultsIcon}>⏳</div>
+              <p>Loading products...</p>
+            </div>
+          ) : filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))

@@ -1,17 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { products } from '@/data/products';
+import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
 import styles from './detail.module.css';
 
 export default function ProductDetail() {
   const params = useParams();
-  const product = products.find((p) => p.id === params.id);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const res = await fetch(`/api/products/${params.id}`);
+        if (res.ok) {
+          const data = await res.json();
+          setProduct({ ...data, id: data.productId || data._id });
+        }
+      } catch (err) {
+        console.error('Failed to fetch from API, using local data:', err);
+      }
+
+      // Fallback to local data if API fails
+      if (!product) {
+        const { products } = await import('@/data/products');
+        const found = products.find((p) => p.id === params.id) || null;
+        setProduct(found);
+      }
+      setLoading(false);
+    }
+    fetchProduct();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id]);
+
+  if (loading) {
+    return (
+      <div className={styles.detailPage}>
+        <div className={styles.container} style={{ textAlign: 'center', paddingTop: '4rem' }}>
+          <p>Loading product...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -53,9 +88,9 @@ export default function ProductDetail() {
             </div>
 
             <div className={styles.priceRow}>
-              <span className={styles.currentPrice}>${product.price.toFixed(2)}</span>
+              <span className={styles.currentPrice}>₹{product.price.toFixed(2)}</span>
               {product.originalPrice && (
-                <span className={styles.oldPrice}>${product.originalPrice.toFixed(2)}</span>
+                <span className={styles.oldPrice}>₹{product.originalPrice.toFixed(2)}</span>
               )}
             </div>
 
@@ -96,7 +131,7 @@ export default function ProductDetail() {
                 className={`btn btn-primary ${styles.addBtn}`}
                 onClick={() => addItem(product, qty)}
               >
-                Add to Cart — ${(product.price * qty).toFixed(2)}
+                Add to Cart — ₹{(product.price * qty).toFixed(2)}
               </button>
             </div>
           </div>
