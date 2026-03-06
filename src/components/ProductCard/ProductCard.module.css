@@ -1,0 +1,184 @@
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.imageWrap {
+  position: relative;
+  height: 240px;
+  background: linear-gradient(135deg, var(--color-cream), #e8d5b8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+}
+
+.coffeeEmoji {
+  font-size: 5rem;
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .coffeeEmoji {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.badgeWrap {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 1;
+}
+
+.quickAdd {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-normal);
+}
+
+.card:hover .quickAdd {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quickAdd:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: scale(1.1);
+}
+
+.body {
+  padding: var(--space-lg);
+}
+
+.origin {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin-bottom: var(--space-sm);
+  transition: color var(--transition-fast);
+}
+
+.card:hover .name {
+  color: var(--color-accent);
+}
+
+.description {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.flavorNotes {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.note {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(201, 166, 110, 0.12);
+  color: var(--color-light-roast);
+  font-weight: 500;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceWrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+}
+
+.originalPrice {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--color-gold);
+}
+
+.ratingCount {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.roastLevel {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.roastDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-latte);
+}
+
+.roastDot.active {
+  background: var(--color-medium-roast);
+}

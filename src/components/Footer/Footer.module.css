@@ -1,0 +1,115 @@
+.footer {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+  padding-top: var(--space-4xl);
+}
+
+.footerGrid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: var(--space-3xl);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-cream);
+}
+
+.brandDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(245, 230, 211, 0.6);
+  max-width: 300px;
+}
+
+.social {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 230, 211, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.socialLink:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.column h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--color-cream);
+}
+
+.column a {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(245, 230, 211, 0.6);
+  padding: var(--space-xs) 0;
+  transition: color var(--transition-fast);
+}
+
+.column a:hover {
+  color: var(--color-gold);
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(245, 230, 211, 0.1);
+  margin-top: var(--space-3xl);
+  padding: var(--space-xl);
+}
+
+.bottomContent {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(245, 230, 211, 0.4);
+}
+
+.payments {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+}

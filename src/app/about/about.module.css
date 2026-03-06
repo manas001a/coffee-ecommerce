@@ -1,0 +1,28 @@
+.aboutPage { padding-top: 120px; min-height: 100vh; }
+.heroSection {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+  background: linear-gradient(135deg, var(--color-espresso), var(--color-dark-roast));
+}
+.heroTitle { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: var(--color-cream); margin-bottom: var(--space-md); }
+.heroDesc { font-size: 1.1rem; color: rgba(245,230,211,0.7); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.storySection {
+  max-width: 900px; margin: 0 auto; padding: var(--space-4xl) var(--space-xl);
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4xl); align-items: center;
+}
+.storyImage { height: 380px; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--color-cream), #e8d5b8); display: flex; align-items: center; justify-content: center; font-size: 8rem; }
+.storyContent h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-espresso); margin-bottom: var(--space-lg); }
+.storyContent p { font-size: 1rem; line-height: 1.8; color: var(--color-text-light); margin-bottom: var(--space-md); }
+.valuesSection { background: var(--color-warm-white); padding: var(--space-4xl) var(--space-xl); }
+.valuesGrid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-xl); }
+.valueCard { background: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-2xl); text-align: center; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); }
+.valueCard:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.valueIcon { font-size: 2.5rem; margin-bottom: var(--space-md); }
+.valueTitle { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--color-espresso); margin-bottom: var(--space-sm); }
+.valueDesc { font-size: 0.88rem; color: var(--color-text-light); line-height: 1.6; }
+.sectionHeader { text-align: center; margin-bottom: var(--space-2xl); }
+.sectionTitle { font-family: var(--font-display); font-size: 2.2rem; color: var(--color-espresso); font-weight: 700; }
+@media (max-width: 768px) {
+  .storySection { grid-template-columns: 1fr; }
+  .valuesGrid { grid-template-columns: 1fr; }
+}
