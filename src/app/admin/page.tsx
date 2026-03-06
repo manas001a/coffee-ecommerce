@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import styles from './admin.module.css';
 
 interface Order {
@@ -24,6 +25,19 @@ interface Order {
 export default function AdminPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/admin/logout', { method: 'POST' });
+      if (res.ok) {
+        router.push('/admin/login');
+        router.refresh();
+      }
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
+  };
 
   useEffect(() => {
     async function fetchOrders() {
@@ -46,8 +60,13 @@ export default function AdminPage() {
     <div className={styles.adminPage}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Admin Dashboard</h1>
-          <p className={styles.subtitle}>Manage your orders and products</p>
+          <div>
+            <h1 className={styles.title}>Admin Dashboard</h1>
+            <p className={styles.subtitle}>Manage your orders and products</p>
+          </div>
+          <button className="btn btn-secondary btn-sm" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
 
         <div className={styles.statsRow}>
